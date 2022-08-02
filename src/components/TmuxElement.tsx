@@ -1,32 +1,32 @@
-import type { IReducerAction, IStylesState } from '../types'
-import { StylesReducerActions } from '../types'
 import classnames from 'classnames'
+
 import { getStyleValue } from '../utils'
+import useStore from '../store'
 
 type Props = {
   name: string
   className?: string
-  stylesState: IStylesState
   children: React.ReactNode
-  dispatch: (action: IReducerAction) => void
 }
 
 export default function TmuxElement(props: Props) {
-  function handleOnClick(name: string) {
+  const state = useStore()
+
+  function handleOnClick(tmuxElement: string) {
     return () => {
-      props.dispatch({ type: StylesReducerActions.SET_CURRENT_ELEMENT, payload: name })
+      state.setCurrentTmuxElement(tmuxElement)
     }
   }
 
   const className = classnames(
     'tmux-element',
     props.className,
-    { 'active': props.stylesState.currentElement === props.name }
+    { 'active': state.currentTmuxElement === props.name }
   )
 
   const style = {
-    color: `#${getStyleValue(props.stylesState, props.name, 'fg')}`,
-    backgroundColor: `#${getStyleValue(props.stylesState, props.name, 'bg')}`,
+    color: `#${getStyleValue(state, props.name, 'fg')}`,
+    backgroundColor: `#${getStyleValue(state, props.name, 'bg')}`,
   }
 
   return (

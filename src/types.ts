@@ -4,22 +4,13 @@ export interface IStyle {
   bg: string
 }
 
-export interface IElementsStyles {
+export interface IStyles {
   [key: string]: IStyle | undefined
 }
 
-export interface IStylesState {
-  currentElement: string
-  elementsStyles: IElementsStyles
-}
-
-export interface IReducerAction {
-  type: string
-  payload: any
-}
-
-export enum StylesReducerActions {
-  SET_CURRENT_ELEMENT = 'SET_CURRENT_ELEMENT',
-  SET_FG_COLOR = 'SET_FG_COLOR',
-  SET_BG_COLOR = 'SET_BG_COLOR',
+export interface IStore {
+  currentTmuxElement: string
+  styles: IStyles
+  setCurrentTmuxElement: (tmuxElement: string) => void
+  setStyleValue: (property: string, value: string) => void
 }

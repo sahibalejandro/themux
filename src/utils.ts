@@ -1,5 +1,5 @@
-import type { IStylesState } from './types'
+import type { IStore } from './types'
 
-export function getStyleValue(stylesState: IStylesState, element: string, property: string): string {
-    return stylesState.elementsStyles[element]?.[property] || ''
+export function getStyleValue(state: IStore, element: string, property: string): string {
+    return state.styles[element]?.[property] || ''
 }

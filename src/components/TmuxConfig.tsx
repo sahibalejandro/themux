@@ -1,14 +1,9 @@
-import type { IStylesState } from '../types'
+import useStore from '../store'
 
-type Props = {
-  stylesState: IStylesState
-}
-
-export default function TmuxConfig(props: Props) {
-  const { stylesState: { elementsStyles } } = props
-  const config = `set-option -g status-style "fg=#${elementsStyles.status?.fg} bg=#${elementsStyles.status?.bg}"
-set-option -g status-left-length 25
-set-option -g status-left "#[fg=#191726 bg=#a3be8c] #S "
+export default function TmuxConfig() {
+  const styles = useStore(state => state.styles)
+  const config = `set-option -g status-style "fg=#${styles.status?.fg} bg=#${styles.status?.bg}"
+set-option -g status-left "#[fg=#${styles.statusLeft?.fg} bg=#${styles.statusLeft?.bg}] #S "
 set-option -g status-right ""
 set-option -g message-style "fg=#f3f2f7 bg=#3a3659"
 set-option -g message-command-style "fg=#b7b3d1 bg=#191716"

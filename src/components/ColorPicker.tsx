@@ -1,27 +1,21 @@
-import { StylesReducerActions } from '../types'
-import type { IReducerAction, IStylesState } from '../types'
+import useStore from '../store'
 import { getStyleValue } from '../utils'
 
 type Props = {
-  type: 'fg' | 'bg'
-  stylesState: IStylesState
-  dispatch: (action: IReducerAction) => void
-}
-
-const actionTypes = {
-  fg: StylesReducerActions.SET_FG_COLOR,
-  bg: StylesReducerActions.SET_BG_COLOR,
+  property: 'fg' | 'bg'
 }
 
 export default function (props: Props) {
+  const state = useStore()
+
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
-    props.dispatch({ type: actionTypes[props.type], payload: e.target.value })
+    state.setStyleValue(props.property, e.target.value)
   }
 
   return (
     <div>
-      Color picker for {props.type}{' '}
-      #<input type="text" value={getStyleValue(props.stylesState, props.stylesState.currentElement, props.type)} onChange={handleOnChange} />
+      Color picker for {props.property}{' '}
+      #<input type="text" value={getStyleValue(state, state.currentTmuxElement, props.property)} onChange={handleOnChange} />
     </div>
   )
 }

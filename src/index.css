@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tmux-status {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.tmux-element {
+  @apply cursor-pointer;
+}
+
+.tmux-element.active, .tmux-element:hover {
+  box-shadow: 0 0 2px red;
+}

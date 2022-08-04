@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 
-import { getStyleValue } from '../utils'
+import { useStyleValue } from '../hooks'
 import useStore from '../store'
 
 type Props = {
@@ -11,6 +11,8 @@ type Props = {
 
 export default function TmuxElement(props: Props) {
   const state = useStore()
+  const color = useStyleValue(props.name, 'fg')
+  const backgroundColor = useStyleValue(props.name, 'bg')
 
   function handleOnClick(tmuxElement: string) {
     return () => {
@@ -25,8 +27,8 @@ export default function TmuxElement(props: Props) {
   )
 
   const style = {
-    color: `#${getStyleValue(state, props.name, 'fg')}`,
-    backgroundColor: `#${getStyleValue(state, props.name, 'bg')}`,
+    color: `#${color}`,
+    backgroundColor: `#${backgroundColor}`,
   }
 
   return (

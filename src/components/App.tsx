@@ -2,14 +2,16 @@ import useStore from '../store'
 import TmuxConfig from './TmuxConfig'
 import ColorPicker from './ColorPicker'
 import TmuxElement from './TmuxElement'
-import { getStyleValue } from '../utils'
+import { useStyleValue } from '../hooks'
 
 function App() {
   const state = useStore()
+  const tmuxStatusColor = useStyleValue('status', 'fg')
+  const tmuxStatusBackgroundColor = useStyleValue('status', 'bg')
 
   const tmuxStatusStyle = {
-    color: `#${getStyleValue(state, 'status', 'fg')}`,
-    backgroundColor: `#${getStyleValue(state, 'status', 'bg')}`,
+    color: `#${tmuxStatusColor}`,
+    backgroundColor: `#${tmuxStatusBackgroundColor}`,
   }
 
   return (

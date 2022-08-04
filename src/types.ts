@@ -1,5 +1,6 @@
 export interface IStyle {
   [key: string]: string | undefined
+
   fg: string
   bg: string
 }
@@ -9,8 +10,8 @@ export interface IStyles {
 }
 
 export interface IStore {
-  currentTmuxElement: string
   styles: IStyles
+  currentTmuxElement: string
   setCurrentTmuxElement: (tmuxElement: string) => void
   setStyleValue: (property: string, value: string) => void
 }

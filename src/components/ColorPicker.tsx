@@ -1,5 +1,5 @@
 import useStore from '../store'
-import { getStyleValue } from '../utils'
+import { useStyleValue } from '../hooks'
 
 type Props = {
   property: 'fg' | 'bg'
@@ -7,6 +7,7 @@ type Props = {
 
 export default function (props: Props) {
   const state = useStore()
+  const styleValue = useStyleValue(state.currentTmuxElement, props.property)
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     state.setStyleValue(props.property, e.target.value)
@@ -15,7 +16,7 @@ export default function (props: Props) {
   return (
     <div>
       Color picker for {props.property}{' '}
-      #<input type="text" value={getStyleValue(state, state.currentTmuxElement, props.property)} onChange={handleOnChange} />
+      #<input type="text" value={styleValue} onChange={handleOnChange} />
     </div>
   )
 }

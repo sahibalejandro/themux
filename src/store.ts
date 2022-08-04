@@ -5,6 +5,7 @@ import type { IStore } from './types'
 export default create<IStore>((set) => {
   const store: IStore = {
     currentTmuxElement: '',
+
     styles: {
       statusLeft: { fg: '191726', bg: 'a3be8c' },
       statusRight: { fg: '191726', bg: 'a3be8c' },
@@ -13,17 +14,21 @@ export default create<IStore>((set) => {
       status: { fg: 'f2f3f7', bg: '191716' },
     },
 
-    setCurrentTmuxElement: (tmuxElement: string) => set({ currentTmuxElement: tmuxElement }),
+    setCurrentTmuxElement: (tmuxElement: string) => {
+      return set({ currentTmuxElement: tmuxElement })
+    },
 
-    setStyleValue: (property: string, value: string) => set(state => {
-      const styles = { ...state.styles }
+    setStyleValue: (property: string, value: string) => {
+      return set(state => {
+        const styles = { ...state.styles }
 
-      if (styles[state.currentTmuxElement] !== undefined) {
-        styles[state.currentTmuxElement]![property] = value
-      }
+        if (styles[state.currentTmuxElement] !== undefined) {
+          styles[state.currentTmuxElement]![property] = value
+        }
 
-      return { styles }
-    }),
+        return { styles }
+      })
+    },
   }
 
   return store

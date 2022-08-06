@@ -20,14 +20,10 @@ export default function TmuxElement(props: Props) {
     };
   }
 
+  const style = { color, backgroundColor };
   const className = classnames("tmux-element", props.className, {
     active: state.currentTmuxElement === props.name,
   });
-
-  const style = {
-    color: `#${color}`,
-    backgroundColor: `#${backgroundColor}`,
-  };
 
   return (
     <div

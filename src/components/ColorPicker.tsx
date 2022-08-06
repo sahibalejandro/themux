@@ -1,22 +1,69 @@
+import { useState } from "react";
+import { HexColorInput, HexColorPicker } from "react-colorful";
+
 import useStore from "../store";
 import { useStyleValue } from "../hooks";
+import RadioButton from "./RadioButton";
 
-type Props = {
-  property: "fg" | "bg";
-};
-
-export default function (props: Props) {
+export default function ColorPicker() {
   const state = useStore();
-  const styleValue = useStyleValue(state.currentTmuxElement, props.property);
+  const [property, setProperty] = useState("fg");
+  const [noBackground, setNoBackground] = useState(false);
+  const color = useStyleValue(state.currentTmuxElement, property);
 
-  function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
-    state.setStyleValue(props.property, e.target.value);
+  function handleCheckboxChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setProperty(e.target.value);
+  }
+
+  function handleNoBackgroundChange(e: React.ChangeEvent<HTMLInputElement>) {
+    if (e.target.checked) {
+      setProperty("fg");
+      state.setStyleValue("bg", "");
+    }
+
+    setNoBackground(e.target.checked);
+  }
+
+  function handleColorChange(color: string) {
+    state.setStyleValue(property, color);
   }
 
   return (
-    <div>
-      Color picker for {props.property} #
-      <input type="text" value={styleValue} onChange={handleOnChange} />
-    </div>
+    <>
+      <div>
+        <RadioButton
+          value="fg"
+          checked={property === "fg"}
+          onChange={handleCheckboxChange}
+        >
+          Font Color
+        </RadioButton>
+      </div>
+      <div>
+        <RadioButton
+          value="bg"
+          disabled={noBackground}
+          checked={property === "bg"}
+          onChange={handleCheckboxChange}
+        >
+          Background Color
+        </RadioButton>
+      </div>
+      <div>
+        <RadioButton
+          checkbox
+          checked={noBackground}
+          onChange={handleNoBackgroundChange}
+        >
+          No Background
+        </RadioButton>
+      </div>
+      <HexColorPicker color={color} onChange={handleColorChange} />
+      <HexColorInput
+        color={color}
+        onChange={handleColorChange}
+        className="border rounded-lg border-gray-500 mt-2 p-2 uppercase"
+      />
+    </>
   );
 }

@@ -2,19 +2,14 @@ import TmuxElement from "./TmuxElement";
 import { useStyleValue } from "../hooks";
 
 export default function TmuxBar() {
-  const tmuxStatusColor = useStyleValue("status", "fg");
-  const tmuxStatusBackgroundColor = useStyleValue("status", "bg");
+  const color = useStyleValue("status", "fg");
+  const backgroundColor = useStyleValue("status", "bg");
 
-  const tmuxStatusStyle = {
-    color: `#${tmuxStatusColor}`,
-    backgroundColor: `#${tmuxStatusBackgroundColor}`,
-  };
+  const style = { color, backgroundColor };
 
   return (
-    <div
-      style={tmuxStatusStyle}
-      className="tmux-status flex max-w-screen-lg mx-auto mt-32"
-    >
+    <div style={style} className="tmux-status flex">
+      {/* TODO: Move Tmux element names to an Enum! */}
       <TmuxElement name="statusLeft">[Session]</TmuxElement>
       <TmuxElement name="windowStatus">0:inactive-</TmuxElement>
       <TmuxElement name="windowStatusCurrent">1:active*</TmuxElement>

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.tmux-status {
+.font-source-code-pro {
   font-family: 'Source Code Pro', monospace;
 }
 

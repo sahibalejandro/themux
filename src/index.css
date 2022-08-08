@@ -13,3 +13,9 @@
 .tmux-element.active, .tmux-element:hover {
   box-shadow: 0 0 2px red;
 }
+
+.clock-number {
+  display: grid;
+  grid-template-columns: repeat(5, 1ch);
+  grid-template-rows: repeat(5, 1em);
+}

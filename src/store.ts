@@ -5,7 +5,7 @@ import type { IStore } from "./types";
 export default create<IStore>((set) => {
   const store: IStore = {
     // TODO: Move tmux element names to an Enum!
-    currentTmuxElement: "statusLeft",
+    currentElement: "statusLeft",
 
     styles: {
       statusLeft: { fg: "#191726", bg: "#a3be8c" },
@@ -15,16 +15,16 @@ export default create<IStore>((set) => {
       status: { fg: "#f2f3f7", bg: "#191726" },
     },
 
-    setCurrentTmuxElement: (tmuxElement: string) => {
-      return set({ currentTmuxElement: tmuxElement });
+    setCurrentElement: (elementName: string) => {
+      return set({ currentElement: elementName });
     },
 
     setStyleValue: (property: string, value: string) => {
       return set((state) => {
         const styles = { ...state.styles };
 
-        if (styles[state.currentTmuxElement] !== undefined) {
-          styles[state.currentTmuxElement]![property] = value;
+        if (styles[state.currentElement] !== undefined) {
+          styles[state.currentElement]![property] = value;
         }
 
         return { styles };

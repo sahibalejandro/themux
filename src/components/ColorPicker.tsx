@@ -9,7 +9,7 @@ export default function ColorPicker() {
   const state = useStore();
   const [property, setProperty] = useState("fg");
   const [noBackground, setNoBackground] = useState(false);
-  const color = useStyleValue(state.currentTmuxElement, property);
+  const color = useStyleValue(state.currentElement, property);
 
   function handleCheckboxChange(e: React.ChangeEvent<HTMLInputElement>) {
     setProperty(e.target.value);

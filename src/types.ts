@@ -11,7 +11,7 @@ export interface IStyles {
 
 export interface IStore {
   styles: IStyles;
-  currentTmuxElement: string;
-  setCurrentTmuxElement: (tmuxElement: string) => void;
+  currentElement: string;
+  setCurrentElement: (elementName: string) => void;
   setStyleValue: (property: string, value: string) => void;
 }

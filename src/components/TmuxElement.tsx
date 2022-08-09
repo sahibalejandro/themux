@@ -16,13 +16,13 @@ export default function TmuxElement(props: Props) {
 
   function handleOnClick(tmuxElement: string) {
     return () => {
-      state.setCurrentTmuxElement(tmuxElement);
+      state.setCurrentElement(tmuxElement);
     };
   }
 
   const style = { color, backgroundColor };
   const className = classnames("tmux-element", props.className, {
-    active: state.currentTmuxElement === props.name,
+    active: state.currentElement === props.name,
   });
 
   return (

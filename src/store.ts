@@ -7,6 +7,7 @@ export default create<IStore>((set) => {
     // TODO: Move tmux element names to an Enum!
     currentElement: "statusLeft",
 
+    // Deprecated
     styles: {
       statusLeft: { fg: "#191726", bg: "#a3be8c" },
       statusRight: { fg: "#191726", bg: "#a3be8c" },
@@ -15,10 +16,18 @@ export default create<IStore>((set) => {
       status: { fg: "#f2f3f7", bg: "#191726" },
     },
 
+    configs: {
+      status: { color: "black", backgroundColor: "red" },
+      statusLeft: { color: "black", backgroundColor: "green" },
+      statusRight: { color: "black", backgroundColor: "blue" },
+      windowStatusCurrent: { color: "red", backgroundColor: "black" },
+    },
+
     setCurrentElement: (elementName: string) => {
       return set({ currentElement: elementName });
     },
 
+    // Deprecated
     setStyleValue: (property: string, value: string) => {
       return set((state) => {
         const styles = { ...state.styles };

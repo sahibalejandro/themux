@@ -1,6 +1,6 @@
 import Pane from "./Pane";
 import Clock from "./Clock";
-import TmuxBar from "./TmuxBar";
+import Status from "./Status";
 import SessionsList from "./SessionsList";
 import Selectable from "./Selectable";
 
@@ -30,7 +30,7 @@ export default function Terminal() {
           </Selectable>
         </Pane>
       </div>
-      <TmuxBar />
+      <Status />
     </div>
   );
 }

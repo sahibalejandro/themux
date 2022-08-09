@@ -5,7 +5,7 @@ import SessionsList from "./SessionsList";
 
 export default function Terminal() {
   return (
-    <div className="font-source-code-pro bg-slate-800 text-slate-50 rounded-xl">
+    <div className="font-source-code-pro bg-slate-800 text-slate-50 rounded-lg overflow-hidden shadow-md">
       <div className="flex">
         <Pane className="basis-1/2 border-b border-slate-900">
           sahib@macbook-pro ~ $

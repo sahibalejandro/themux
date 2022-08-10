@@ -13,6 +13,7 @@ export default function Status() {
   const statusStyles = getStyles(useElementConfig("status"));
   const statusLeftStyles = getStyles(useElementConfig("statusLeft"));
   const statusRightStyles = getStyles(useElementConfig("statusRight"));
+  const windowStatusStyles = getStyles(useElementConfig("windowStatus"));
   const windowStatusCurrentStyles = getStyles(
     useElementConfig("windowStatusCurrent")
   );
@@ -23,7 +24,7 @@ export default function Status() {
         <Selectable elementName="statusLeft" style={statusLeftStyles}>
           <div>[themux]</div>
         </Selectable>
-        <Selectable elementName="windowStatus">
+        <Selectable elementName="windowStatus" style={windowStatusStyles}>
           <div>0:inactive-</div>
         </Selectable>
         <Selectable
@@ -32,7 +33,7 @@ export default function Status() {
         >
           <div>1:active*</div>
         </Selectable>
-        <Selectable elementName="windowStatus">
+        <Selectable elementName="windowStatus" style={windowStatusStyles}>
           <div>2:inactive</div>
         </Selectable>
         <div className="grow"></div>

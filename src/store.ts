@@ -21,6 +21,7 @@ export default create<IStore>((set) => {
       statusLeft: { color: "black", backgroundColor: "green" },
       statusRight: { color: "black", backgroundColor: "blue" },
       windowStatusCurrent: { color: "red", backgroundColor: "black" },
+      windowStatus: { color: "yellow", backgroundColor: "green" },
     },
 
     setCurrentElement: (elementName: string) => {

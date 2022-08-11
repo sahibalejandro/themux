@@ -1,5 +1,4 @@
 import useStore from "./store";
-import type { IConfigs } from "./types";
 
 // Possible deprecated
 export function useStyleValue(element: string, property: string): string {
@@ -7,7 +6,7 @@ export function useStyleValue(element: string, property: string): string {
   return state.styles[element]?.[property] || "";
 }
 
-export function useElementConfig(elementName: keyof IConfigs) {
+export function useElementProperties(elementName: string) {
   const state = useStore();
-  return state.configs[elementName];
+  return state.elementsProperties[elementName];
 }

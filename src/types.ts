@@ -1,36 +1,22 @@
-// Deprecated
-export interface IStyle {
-  [property: string]: string | undefined;
-
-  fg: string;
-  bg: string;
+export interface IElementProperty {
+  cssProperty: string;
+  tmuxProperty: string;
+  uiControl: string;
+  value: string;
 }
 
-// Deprecated
-export interface IStyles {
-  [elementName: string]: IStyle | undefined;
-}
-
-export interface IConfig {
-  color: string;
-  backgroundColor: string;
-}
-
-export interface IConfigs {
-  status: IConfig;
-  statusLeft: IConfig;
-  windowStatus: IConfig;
-  windowStatusCurrent: IConfig;
-  statusRight: IConfig;
+export interface IElementsProperties {
+  [key: string]: IElementProperty[] | undefined;
 }
 
 export interface IStore {
-  // Deprecated
-  styles: IStyles;
-
   currentElement: string;
-  configs: IConfigs;
+  elementsProperties: IElementsProperties;
 
   setCurrentElement: (elementName: string) => void;
-  setStyleValue: (property: string, value: string) => void;
+  setPropertyValue: (
+    elementName: string,
+    property: IElementProperty,
+    value: string
+  ) => void;
 }

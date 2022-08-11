@@ -1,10 +1,10 @@
 import useStore from "../store";
-import type { IConfigs } from "../types";
+import type { IElementsProperties } from "../types";
 
 type PropsType = {
   style?: any;
   className?: string;
-  elementName: keyof IConfigs;
+  elementName: keyof IElementsProperties;
   children: React.ReactNode;
 };
 

@@ -1,21 +1,26 @@
 import Selectable from "./Selectable";
-import { useElementConfig } from "../hooks";
-import type { IConfig } from "../types";
+import { useElementProperties } from "../hooks";
+import type { IElementProperty } from "../types";
 
-function getStyles(config: IConfig) {
-  return {
-    color: config.color,
-    backgroundColor: config.backgroundColor,
-  };
+function getStyles(elementProperties: IElementProperty[]) {
+  return elementProperties.reduce((styles, elementProperty) => {
+    const { cssProperty, value } = elementProperty;
+
+    if (cssProperty !== undefined) {
+      styles = { ...styles, [cssProperty]: value };
+    }
+
+    return styles;
+  }, {});
 }
 
 export default function Status() {
-  const statusStyles = getStyles(useElementConfig("status"));
-  const statusLeftStyles = getStyles(useElementConfig("statusLeft"));
-  const statusRightStyles = getStyles(useElementConfig("statusRight"));
-  const windowStatusStyles = getStyles(useElementConfig("windowStatus"));
+  const statusStyles = getStyles(useElementProperties("status"));
+  const statusLeftStyles = getStyles(useElementProperties("statusLeft"));
+  const statusRightStyles = getStyles(useElementProperties("statusRight"));
+  const windowStatusStyles = getStyles(useElementProperties("windowStatus"));
   const windowStatusCurrentStyles = getStyles(
-    useElementConfig("windowStatusCurrent")
+    useElementProperties("windowStatusCurrent")
   );
 
   return (

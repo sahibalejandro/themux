@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
 
 import ColorPicker from "./ColorPicker";
-import store, { UIControls } from "../store";
+import { UIControls } from "../types";
+import store from "../store";
 
 function PropertiesPanel() {
   function handleValueChange(propName: string) {

@@ -1,7 +1,7 @@
 import Terminal from "./Terminal";
 import PropertiesPanel from "./PropertiesPanel";
 
-function App() {
+export default function App() {
   return (
     <div className="px-8 pb-16">
       <h1 className="text-5xl mt-8">Tmux Theme Editor</h1>
@@ -16,5 +16,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

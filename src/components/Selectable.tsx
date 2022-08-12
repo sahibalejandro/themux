@@ -1,19 +1,17 @@
-import useStore from "../store";
-import type { IElementsProperties } from "../types";
+import store from "../store";
+import type { ElementsNames } from "../store";
 
 type PropsType = {
   style?: any;
   className?: string;
-  elementName: keyof IElementsProperties;
+  element: ElementsNames;
   children: React.ReactNode;
 };
 
 function Selectable(props: PropsType) {
-  const state = useStore();
-
   function handleClick(e: React.MouseEvent) {
     e.stopPropagation();
-    state.setCurrentElement(props.elementName);
+    store.setCurrentElement(props.element);
   }
 
   return (

@@ -7,7 +7,7 @@ import Selectable from "./Selectable";
 export default function Terminal() {
   return (
     <div className="font-source-code-pro bg-slate-800 text-slate-50 rounded-lg overflow-hidden shadow-md">
-      <div className="flex">
+      {/*<div className="flex">
         <Selectable
           elementName="inactive-pane"
           className="basis-1/2 border-b border-slate-900"
@@ -29,7 +29,7 @@ export default function Terminal() {
             <Clock />
           </Selectable>
         </Pane>
-      </div>
+      </div>*/}
       <Status />
     </div>
   );

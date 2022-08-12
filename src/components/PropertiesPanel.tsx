@@ -1,39 +1,31 @@
-import useStore from "../store";
-import { useElementProperties } from "../hooks";
+import { observer } from "mobx-react-lite";
+
 import ColorPicker from "./ColorPicker";
-import type { IElementProperty } from "../types";
+import store, { UIControls } from "../store";
 
-export default function PropertiesPanel() {
-  const state = useStore();
-  const elementProperties = useElementProperties(state.currentElement);
-
-  if (elementProperties === undefined) {
-    return <div>No properties for element {state.currentElement}</div>;
-  }
-
-  function handlePropertyChange(property: IElementProperty) {
+function PropertiesPanel() {
+  function handleValueChange(propName: string) {
     return (value: string) => {
-      state.setPropertyValue(state.currentElement, property, value);
+      store.setElementPropValue(store.element, propName, value);
     };
   }
 
-  return elementProperties.map((property, index) => {
-    const { uiControl, value } = property;
-    let UIControl: React.ReactNode;
-
-    switch (uiControl) {
-      case "ColorPicker":
-        UIControl = (
-          <ColorPicker
-            color={value}
-            onChange={handlePropertyChange(property)}
-          />
-        );
-        break;
-      default:
-        UIControl = <div>Control {uiControl} is not supported.</div>;
-    }
-
-    return <div key={`${uiControl}-${index}`}>{UIControl}</div>;
-  });
+  return (
+    <div>
+      {store.currentElementProps.map((prop, idx) => {
+        switch (prop.uiControl) {
+          case UIControls.ColorPicker:
+            return (
+              <ColorPicker
+                key={`ColorPicker-${idx}`}
+                color={prop.value}
+                onChange={handleValueChange(prop.name)}
+              />
+            );
+        }
+      })}
+    </div>
+  );
 }
+
+export default observer(PropertiesPanel);

@@ -1,5 +1,5 @@
 import store from "../store";
-import type { ElementsNames } from "../store";
+import type { ElementsNames } from "../types";
 
 type PropsType = {
   style?: any;

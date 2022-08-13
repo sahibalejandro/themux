@@ -17,6 +17,10 @@ export interface Elements {
   statusRight: Property[];
   windowStatus: Property[];
   windowStatusCurrent: Property[];
+  pane: Property[];
+  paneActive: Property[];
+  clock: Property[];
+  mode: Property[];
 }
 
 export type ElementsNames = keyof Elements;

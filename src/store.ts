@@ -28,7 +28,7 @@ class Store {
     }
   }
 
-  getElementStyles(element: ElementsNames) {
+  getElementStyles(element: ElementsNames): any {
     return this.elements[element].reduce((styles, property) => {
       if (!property.cssProp) {
         return styles;

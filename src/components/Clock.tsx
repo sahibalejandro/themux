@@ -1,5 +1,7 @@
+import { observer } from "mobx-react-lite";
 import { useCallback, useEffect, useState } from "react";
 
+import store from "../store";
 import ClockColon from "./ClockColon";
 import ClockNumber from "./ClockNumber";
 
@@ -33,10 +35,12 @@ function getCurrentTimeDigits(): TimeDigitsType {
   };
 }
 
-export default function Clock() {
+function Clock() {
   const [time, setTime] = useState<TimeDigitsType>(
     useCallback(() => getCurrentTimeDigits(), [])
   );
+
+  const style = store.getElementStyles("clock");
 
   useEffect(() => {
     const intervalId = setInterval(() => setTime(getCurrentTimeDigits()), 1000);
@@ -52,13 +56,15 @@ export default function Clock() {
 
   return (
     <div className="flex gap-[1ch]">
-      <ClockNumber number={hourFirstDigit} />
-      <ClockNumber number={hourSecondDigit} />
+      <ClockNumber number={hourFirstDigit} style={style} />
+      <ClockNumber number={hourSecondDigit} style={style} />
       <div className="px-[2ch]">
-        <ClockColon />
+        <ClockColon style={style} />
       </div>
-      <ClockNumber number={minuteFirstDigit} />
-      <ClockNumber number={minuteSecondDigit} />
+      <ClockNumber number={minuteFirstDigit} style={style} />
+      <ClockNumber number={minuteSecondDigit} style={style} />
     </div>
   );
 }
+
+export default observer(Clock);

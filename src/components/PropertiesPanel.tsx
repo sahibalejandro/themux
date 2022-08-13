@@ -1,30 +1,24 @@
 import { observer } from "mobx-react-lite";
 
-import ColorPicker from "./ColorPicker";
-import { UIControls } from "../types";
 import store from "../store";
+import ElementProperty from "./ElementProperty";
 
 function PropertiesPanel() {
-  function handleValueChange(propName: string) {
+  function handlePropertyValueChange(name: string) {
     return (value: string) => {
-      store.setElementPropValue(store.element, propName, value);
+      store.setElementPropValue(store.element, name, value);
     };
   }
 
   return (
     <div>
-      {store.currentElementProps.map((prop, idx) => {
-        switch (prop.uiControl) {
-          case UIControls.ColorPicker:
-            return (
-              <ColorPicker
-                key={`ColorPicker-${idx}`}
-                color={prop.value}
-                onChange={handleValueChange(prop.name)}
-              />
-            );
-        }
-      })}
+      {store.currentElementProps.map((property, idx) => (
+        <ElementProperty
+          key={`element-${idx}`}
+          property={property}
+          onChange={handlePropertyValueChange(property.name)}
+        />
+      ))}
     </div>
   );
 }

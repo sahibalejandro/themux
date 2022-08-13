@@ -8,7 +8,7 @@ function backgroundColor(overrides: Partial<Property>): Property {
     cssProp: "backgroundColor",
     tmuxProp: "bg",
     uiControl: UIControls.ColorPicker,
-    value: "white",
+    value: "#ffffff",
     ...overrides,
   };
 }
@@ -20,12 +20,24 @@ function fontColor(overrides: Partial<Property>): Property {
     cssProp: "color",
     tmuxProp: "fg",
     uiControl: UIControls.ColorPicker,
-    value: "black",
+    value: "#191726",
     ...overrides,
   };
 }
 
-export default {
+function borderColor(overrides: Partial<Property>): Property {
+  return {
+    name: "border-color",
+    display: "Border Color",
+    cssProp: "border-color",
+    tmuxProp: "fg",
+    uiControl: UIControls.ColorPicker,
+    value: "#191726",
+    ...overrides,
+  };
+}
+
+const elements: Elements = {
   status: [backgroundColor({ value: "#000000" })],
 
   statusLeft: [
@@ -47,4 +59,17 @@ export default {
     fontColor({ value: "#ffffff" }),
     backgroundColor({ value: "#0000ff" }),
   ],
-} as Elements;
+
+  pane: [borderColor({ value: "#191726" })],
+
+  paneActive: [borderColor({ value: "#73A132" })],
+
+  clock: [backgroundColor({ display: "Font Color", value: "#ff0000" })],
+
+  mode: [
+    fontColor({ value: "#ffffff" }),
+    backgroundColor({ value: "#73A132" }),
+  ],
+};
+
+export default elements;

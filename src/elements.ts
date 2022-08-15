@@ -1,7 +1,7 @@
 import { UIControls } from "./types";
 import type { Elements, Property } from "./types";
 
-function backgroundColor(overrides: Partial<Property>): Property {
+function backgroundColor(overrides: Partial<Property> = {}): Property {
   return {
     name: "background-color",
     display: "Background Color",
@@ -13,31 +13,36 @@ function backgroundColor(overrides: Partial<Property>): Property {
   };
 }
 
-function fontColor(overrides: Partial<Property>): Property {
+function fontColor(overrides: Partial<Property> = {}): Property {
   return {
     name: "font-color",
     display: "Font Color",
     cssProp: "color",
     tmuxProp: "fg",
     uiControl: UIControls.ColorPicker,
-    value: "#191726",
+    value: "#000000",
     ...overrides,
   };
 }
 
-function borderColor(overrides: Partial<Property>): Property {
+function borderColor(overrides: Partial<Property> = {}): Property {
   return {
     name: "border-color",
     display: "Border Color",
-    cssProp: "border-color",
+    cssProp: "borderColor",
     tmuxProp: "fg",
     uiControl: UIControls.ColorPicker,
-    value: "#191726",
+    value: "#000000",
     ...overrides,
   };
 }
 
 const elements: Elements = {
+  terminal: [
+    fontColor({ value: "#ffffff" }),
+    backgroundColor({ value: "#000000" }),
+  ],
+
   status: [backgroundColor({ value: "#000000" })],
 
   statusLeft: [
@@ -60,7 +65,7 @@ const elements: Elements = {
     backgroundColor({ value: "#0000ff" }),
   ],
 
-  pane: [borderColor({ value: "#191726" })],
+  pane: [borderColor({ value: "#ffffff" })],
 
   paneActive: [borderColor({ value: "#73A132" })],
 
@@ -68,7 +73,10 @@ const elements: Elements = {
 
   mode: [
     fontColor({ value: "#ffffff" }),
-    backgroundColor({ value: "#73A132" }),
+    backgroundColor({
+      description: "Background color for selected session",
+      value: "#73A132",
+    }),
   ],
 };
 

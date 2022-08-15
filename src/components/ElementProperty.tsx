@@ -11,8 +11,11 @@ export default function (props: PropsType) {
   const { property } = props;
 
   return (
-    <div className="flex">
-      <div>{property.display}</div>
+    <div className="flex mt-4 pt-4 border-t">
+      <div>
+        {property.display}
+        <div>{property.description}</div>
+      </div>
       <div className="ml-auto">
         {property.uiControl === UIControls.ColorPicker && (
           <ColorPicker color={property.value} onChange={props.onChange} />

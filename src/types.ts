@@ -5,6 +5,7 @@ export enum UIControls {
 export interface Property {
   name: string;
   display: string;
+  description?: string;
   cssProp: string;
   tmuxProp: string;
   uiControl: UIControls;
@@ -12,6 +13,7 @@ export interface Property {
 }
 
 export interface Elements {
+  terminal: Property[];
   status: Property[];
   statusLeft: Property[];
   statusRight: Property[];

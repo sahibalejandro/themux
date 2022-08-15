@@ -25,6 +25,7 @@ class Store {
 
     if (prop) {
       prop.value = value;
+      this.elements[element] = [...this.elements[element]];
     }
   }
 

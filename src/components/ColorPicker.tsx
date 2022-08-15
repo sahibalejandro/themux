@@ -10,6 +10,7 @@ export default function ColorPicker(props: PropsType) {
     <>
       <HexColorPicker color={props.color} onChange={props.onChange} />
       <HexColorInput
+        prefixed
         color={props.color}
         onChange={props.onChange}
         className="border rounded-lg border-gray-500 mt-2 p-2 uppercase"

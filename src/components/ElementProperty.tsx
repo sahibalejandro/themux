@@ -1,14 +1,22 @@
+import React from "react";
+
 import type { Property } from "../types";
 import ColorPicker from "./ColorPicker";
 import { UIControls } from "../types";
 
 type PropsType = {
   property: Property;
-  onChange: (value: string) => void;
+  onChange: (propertyName: string, value: string) => void;
 };
 
-export default function (props: PropsType) {
+function ElementProperty(props: PropsType) {
   const { property } = props;
+
+  function handleChange(propertyName: string) {
+    return (value: string) => {
+      props.onChange(propertyName, value);
+    };
+  }
 
   return (
     <div className="flex mt-4 pt-4 border-t">
@@ -18,9 +26,14 @@ export default function (props: PropsType) {
       </div>
       <div className="ml-auto">
         {property.uiControl === UIControls.ColorPicker && (
-          <ColorPicker color={property.value} onChange={props.onChange} />
+          <ColorPicker
+            color={property.value}
+            onChange={handleChange(property.name)}
+          />
         )}
       </div>
     </div>
   );
 }
+
+export default React.memo(ElementProperty);

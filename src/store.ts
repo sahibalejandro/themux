@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 
 import elements from "./elements";
 import type { ElementName } from "./types";
@@ -9,14 +9,19 @@ class Store {
   elements = elements;
 
   constructor() {
-    makeAutoObservable(this);
+    makeObservable(this, {
+      element: observable,
+      elements: observable,
+      setCurrentElement: action,
+      setElementPropertyValue: action,
+    });
   }
 
-  get currentElement() {
+  getCurrentElement() {
     return this.elements[this.element];
   }
 
-  get currentElementProps() {
+  getCurrentElementProperties() {
     return this.elements[this.element].properties;
   }
 
@@ -24,16 +29,14 @@ class Store {
     this.element = element;
   }
 
-  setElementPropValue(element: ElementName, name: string, value: string) {
-    const prop = this.elements[element].properties.find(
-      (prop) => prop.name === name
+  setElementPropertyValue(element: ElementName, name: string, value: string) {
+    const propertyIndex = this.elements[element].properties.findIndex(
+      (property) => property.name === name
     );
 
-    if (prop) {
-      prop.value = value;
-      this.elements[element].properties = [
-        ...this.elements[element].properties,
-      ];
+    if (propertyIndex >= 0) {
+      const property = this.elements[element].properties[propertyIndex];
+      this.elements[element].properties[propertyIndex] = { ...property, value };
     }
   }
 

@@ -1,10 +1,10 @@
 import { makeAutoObservable } from "mobx";
 
 import elements from "./elements";
-import type { ElementsNames } from "./types";
+import type { ElementName } from "./types";
 
 class Store {
-  element: ElementsNames = "status";
+  element: ElementName = "status";
 
   elements = elements;
 
@@ -12,25 +12,33 @@ class Store {
     makeAutoObservable(this);
   }
 
-  get currentElementProps() {
+  get currentElement() {
     return this.elements[this.element];
   }
 
-  setCurrentElement(element: ElementsNames) {
+  get currentElementProps() {
+    return this.elements[this.element].properties;
+  }
+
+  setCurrentElement(element: ElementName) {
     this.element = element;
   }
 
-  setElementPropValue(element: ElementsNames, name: string, value: string) {
-    const prop = this.elements[element].find((prop) => prop.name === name);
+  setElementPropValue(element: ElementName, name: string, value: string) {
+    const prop = this.elements[element].properties.find(
+      (prop) => prop.name === name
+    );
 
     if (prop) {
       prop.value = value;
-      this.elements[element] = [...this.elements[element]];
+      this.elements[element].properties = [
+        ...this.elements[element].properties,
+      ];
     }
   }
 
-  getElementStyles(element: ElementsNames): any {
-    return this.elements[element].reduce((styles, property) => {
+  getElementStyles(element: ElementName): any {
+    return this.elements[element].properties.reduce((styles, property) => {
       if (!property.cssProp) {
         return styles;
       }

@@ -2,6 +2,11 @@ export enum UIControls {
   ColorPicker = "ColorPicker",
 }
 
+export interface Element {
+  display: string;
+  properties: Property[];
+}
+
 export interface Property {
   name: string;
   display: string;
@@ -13,42 +18,16 @@ export interface Property {
 }
 
 export interface Elements {
-  terminal: Property[];
-  status: Property[];
-  statusLeft: Property[];
-  statusRight: Property[];
-  windowStatus: Property[];
-  windowStatusCurrent: Property[];
-  pane: Property[];
-  paneActive: Property[];
-  clock: Property[];
-  mode: Property[];
+  terminal: Element;
+  status: Element;
+  statusLeft: Element;
+  statusRight: Element;
+  windowStatus: Element;
+  windowStatusCurrent: Element;
+  pane: Element;
+  paneActive: Element;
+  clock: Element;
+  mode: Element;
 }
 
-export type ElementsNames = keyof Elements;
-
-/*
- * Deprecated types
- */
-export interface IElementProperty {
-  cssProperty: string;
-  tmuxProperty: string;
-  uiControl: string;
-  value: string;
-}
-
-export interface IElementsProperties {
-  [key: string]: IElementProperty[] | undefined;
-}
-
-export interface IStore {
-  currentElement: string;
-  elementsProperties: IElementsProperties;
-
-  setCurrentElement: (elementName: string) => void;
-  setPropertyValue: (
-    elementName: string,
-    property: IElementProperty,
-    value: string
-  ) => void;
-}
+export type ElementName = keyof Elements;

@@ -1,11 +1,11 @@
 import { observer } from "mobx-react-lite";
 
 import store from "../store";
-import type { ElementsNames } from "../types";
+import type { ElementName } from "../types";
 
 type PropsType = {
   className?: string;
-  element: ElementsNames;
+  element: ElementName;
   children?: React.ReactNode;
 };
 

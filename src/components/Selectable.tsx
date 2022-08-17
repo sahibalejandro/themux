@@ -1,10 +1,10 @@
 import store from "../store";
-import type { ElementsNames } from "../types";
+import type { ElementName } from "../types";
 
 type PropsType = {
   style?: any;
   className?: string;
-  element: ElementsNames;
+  element: ElementName;
   children: React.ReactNode;
 };
 

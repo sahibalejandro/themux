@@ -38,46 +38,73 @@ function borderColor(overrides: Partial<Property> = {}): Property {
 }
 
 const elements: Elements = {
-  terminal: [
-    fontColor({ value: "#ffffff" }),
-    backgroundColor({ value: "#000000" }),
-  ],
+  terminal: {
+    display: "Terminal",
+    properties: [
+      fontColor({ value: "#ffffff" }),
+      backgroundColor({ value: "#000000" }),
+    ],
+  },
 
-  status: [backgroundColor({ value: "#000000" })],
+  status: {
+    display: "Status Bar",
+    properties: [backgroundColor({ value: "#000000" })],
+  },
 
-  statusLeft: [
-    fontColor({ value: "#000000" }),
-    backgroundColor({ value: "#00ff00" }),
-  ],
+  statusLeft: {
+    display: "Status Left",
+    properties: [
+      fontColor({ value: "#000000" }),
+      backgroundColor({ value: "#00ff00" }),
+    ],
+  },
 
-  statusRight: [
-    fontColor({ value: "#000000" }),
-    backgroundColor({ value: "#ffcc00" }),
-  ],
+  statusRight: {
+    display: "Status Right",
+    properties: [
+      fontColor({ value: "#000000" }),
+      backgroundColor({ value: "#ffcc00" }),
+    ],
+  },
 
-  windowStatus: [
-    fontColor({ value: "#efefef" }),
-    backgroundColor({ value: "#555555" }),
-  ],
+  windowStatus: {
+    display: "Window Status",
+    properties: [
+      fontColor({ value: "#efefef" }),
+      backgroundColor({ value: "#555555" }),
+    ],
+  },
 
-  windowStatusCurrent: [
-    fontColor({ value: "#ffffff" }),
-    backgroundColor({ value: "#0000ff" }),
-  ],
+  windowStatusCurrent: {
+    display: "Window Status Current",
+    properties: [
+      fontColor({ value: "#ffffff" }),
+      backgroundColor({ value: "#0000ff" }),
+    ],
+  },
 
-  pane: [borderColor({ value: "#ffffff" })],
+  pane: { display: "Pane", properties: [borderColor({ value: "#ffffff" })] },
 
-  paneActive: [borderColor({ value: "#73A132" })],
+  paneActive: {
+    display: "Pane Active",
+    properties: [borderColor({ value: "#73A132" })],
+  },
 
-  clock: [backgroundColor({ display: "Font Color", value: "#ff0000" })],
+  clock: {
+    display: "Clock",
+    properties: [backgroundColor({ display: "Font Color", value: "#ff0000" })],
+  },
 
-  mode: [
-    fontColor({ value: "#ffffff" }),
-    backgroundColor({
-      description: "Background color for selected session",
-      value: "#73A132",
-    }),
-  ],
+  mode: {
+    display: "Mode",
+    properties: [
+      fontColor({ value: "#ffffff" }),
+      backgroundColor({
+        description: "Background color for selected session",
+        value: "#73A132",
+      }),
+    ],
+  },
 };
 
 export default elements;

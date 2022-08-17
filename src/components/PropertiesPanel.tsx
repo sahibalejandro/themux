@@ -12,6 +12,7 @@ function PropertiesPanel() {
 
   return (
     <div>
+      {store.currentElement.display}
       {store.currentElementProps.map((property, idx) => (
         <ElementProperty
           key={`element-${idx}`}

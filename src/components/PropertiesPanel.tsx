@@ -1,16 +1,14 @@
-import { useCallback } from "react";
 import { observer } from "mobx-react-lite";
 
 import store from "../store";
 import ElementProperty from "./ElementProperty";
 
 function PropertiesPanel() {
-  const handlePropertyValueChange = useCallback(
-    (name: string, value: string) => {
-      store.setElementPropertyValue(store.element, name, value);
-    },
-    []
-  );
+  function makePropertyChangeHandler(propertyName: string) {
+    return (value: string) => {
+      store.setElementPropertyValue(store.element, propertyName, value);
+    };
+  }
 
   return (
     <div>
@@ -19,7 +17,7 @@ function PropertiesPanel() {
         <ElementProperty
           key={`element-${idx}`}
           property={property}
-          onChange={handlePropertyValueChange}
+          onChange={makePropertyChangeHandler(property.name)}
         />
       ))}
     </div>

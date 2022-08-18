@@ -29,15 +29,16 @@ class Store {
     this.element = element;
   }
 
-  setElementPropertyValue(element: ElementName, name: string, value: string) {
-    const propertyIndex = this.elements[element].properties.findIndex(
-      (property) => property.name === name
+  setElementPropertyValue(
+    elementName: ElementName,
+    propertyName: string,
+    value: string
+  ) {
+    const property = this.elements[elementName].properties.find(
+      (property) => property.name === propertyName
     );
 
-    if (propertyIndex >= 0) {
-      const property = this.elements[element].properties[propertyIndex];
-      this.elements[element].properties[propertyIndex] = { ...property, value };
-    }
+    property && (property.value = value);
   }
 
   getElementStyles(element: ElementName): any {

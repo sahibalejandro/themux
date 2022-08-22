@@ -1,8 +1,9 @@
 import { observer } from "mobx-react-lite";
 
-import type { Property } from "../types";
-import ColorPicker from "./ColorPicker";
+import ExtraText from "./ExtraText";
 import { UIControls } from "../types";
+import ColorPicker from "./ColorPicker";
+import type { Property } from "../types";
 
 type PropsType = {
   property: Property;
@@ -21,6 +22,9 @@ function ElementProperty(props: PropsType) {
       <div className="ml-auto">
         {property.uiControl === UIControls.ColorPicker && (
           <ColorPicker color={property.value} onChange={props.onChange} />
+        )}
+        {property.uiControl === UIControls.ExtraText && (
+          <ExtraText text={property.value} onChange={props.onChange} />
         )}
       </div>
     </div>

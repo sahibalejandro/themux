@@ -1,5 +1,6 @@
 export enum UIControls {
   ColorPicker = "ColorPicker",
+  ExtraText = "ExtraText",
 }
 
 export interface Element {
@@ -11,8 +12,8 @@ export interface Property {
   name: string;
   display: string;
   description?: string;
-  cssProp: string;
-  tmuxProp: string;
+  cssProp?: string;
+  tmuxProp?: string;
   uiControl: UIControls;
   value: string;
 }

@@ -50,6 +50,14 @@ class Store {
       return { ...styles, [property.cssProp]: property.value };
     }, {});
   }
+
+  getElementPropertyValue(element: ElementName, propertyName: string) {
+    const property = this.elements[element].properties.find(
+      (property) => property.name === propertyName
+    );
+
+    return property?.value || "";
+  }
 }
 
 export default new Store();

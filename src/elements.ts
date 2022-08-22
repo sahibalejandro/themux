@@ -37,6 +37,16 @@ function borderColor(overrides: Partial<Property> = {}): Property {
   };
 }
 
+function extraText(overrides: Partial<Property> = {}) {
+  return {
+    name: "extra-text",
+    display: "Extra Text",
+    uiControl: UIControls.ExtraText,
+    value: " ",
+    ...overrides,
+  };
+}
+
 const elements: Elements = {
   terminal: {
     display: "Terminal",
@@ -56,6 +66,8 @@ const elements: Elements = {
     properties: [
       fontColor({ value: "#000000" }),
       backgroundColor({ value: "#00ff00" }),
+      extraText({ name: "sufix", display: "Text Before", value: " " }),
+      extraText({ name: "prefix", display: "Text After", value: " " }),
     ],
   },
 

@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 
 import store from "../store";
 import Selectable from "./Selectable";
+import { keepWhitespaces } from "../utils";
 
 function Status() {
   const statusStyles = store.getElementStyles("status");
@@ -11,12 +12,20 @@ function Status() {
   const windowStatusCurrentStyles = store.getElementStyles(
     "windowStatusCurrent"
   );
+  const statusLeftBefore = keepWhitespaces(
+    store.getElementPropertyValue("statusLeft", "sufix")
+  );
+  const statusLeftAfter = keepWhitespaces(
+    store.getElementPropertyValue("statusLeft", "prefix")
+  );
 
   return (
     <Selectable element="status" style={statusStyles}>
       <div className="flex">
         <Selectable element="statusLeft" style={statusLeftStyles}>
-          <div>[themux]</div>
+          <div>
+            {statusLeftBefore}themux{statusLeftAfter}
+          </div>
         </Selectable>
         <Selectable element="windowStatus" style={windowStatusStyles}>
           <div>0:inactive-</div>

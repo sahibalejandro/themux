@@ -24,3 +24,7 @@
   @apply font-bold bg-slate-100 rounded-lg text-slate-600 shadow-slate-300 px-4 py-2;
   @apply hover:bg-slate-200 hover:text-slate-900
 }
+
+.input {
+  @apply border rounded-lg border-slate-400 mt-2 p-2;
+}

@@ -9,12 +9,14 @@ export default function ColorPicker(props: PropsType) {
   return (
     <>
       <HexColorPicker color={props.color} onChange={props.onChange} />
-      <HexColorInput
-        prefixed
-        color={props.color}
-        onChange={props.onChange}
-        className="border rounded-lg border-gray-500 mt-2 p-2 uppercase"
-      />
+      <div className="text-right">
+        <HexColorInput
+          prefixed
+          color={props.color}
+          onChange={props.onChange}
+          className="input uppercase"
+        />
+      </div>
     </>
   );
 }

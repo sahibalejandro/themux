@@ -14,9 +14,9 @@ function ElementProperty(props: PropsType) {
 
   return (
     <div className="flex mt-4 pt-4 border-t">
-      <div>
+      <div className="pr-2">
         {property.display}
-        <div>{property.description}</div>
+        <div className="text-slate-400 text-sm">{property.description}</div>
       </div>
       <div className="ml-auto">
         {property.uiControl === UIControls.ColorPicker && (

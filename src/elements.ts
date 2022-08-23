@@ -66,8 +66,19 @@ const elements: Elements = {
     properties: [
       fontColor({ value: "#000000" }),
       backgroundColor({ value: "#00ff00" }),
-      extraText({ name: "sufix", display: "Text Before", value: " " }),
-      extraText({ name: "prefix", display: "Text After", value: " " }),
+      extraText({
+        name: "sufix",
+        display: "Text Before",
+        description: "Text before the session name",
+        value: " ",
+      }),
+      fontColor({ value: "#000000" }),
+      extraText({
+        name: "prefix",
+        display: "Text After",
+        description: "Text after the session name",
+        value: " ",
+      }),
     ],
   },
 

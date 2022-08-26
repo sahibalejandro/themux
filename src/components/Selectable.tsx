@@ -1,17 +1,17 @@
 import store from "../store";
-import type { ElementName } from "../types";
+import type { TerminalComponentName } from "../types";
 
 type PropsType = {
   style?: any;
   className?: string;
-  element: ElementName;
   children: React.ReactNode;
+  terminalComponentName: TerminalComponentName;
 };
 
 function Selectable(props: PropsType) {
   function handleClick(e: React.MouseEvent) {
     e.stopPropagation();
-    store.setCurrentElement(props.element);
+    store.setCurrentTerminalComponent(props.terminalComponentName);
   }
 
   return (

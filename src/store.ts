@@ -1,48 +1,80 @@
 import { action, makeObservable, observable } from "mobx";
 
-import elements from "./elements";
-import type { ElementName } from "./types";
+import type { TerminalComponentName } from "./types";
+import terminalComponents from "./terminalComponents";
 
 class Store {
-  element: ElementName = "status";
+  currentTerminalComponentName: TerminalComponentName = "status";
 
-  elements = elements;
+  terminalComponents = terminalComponents;
 
   constructor() {
     makeObservable(this, {
-      element: observable,
-      elements: observable,
-      setCurrentElement: action,
-      setElementPropertyValue: action,
+      setPropertyValue: action,
+      terminalComponents: observable,
+      setCurrentTerminalComponent: action,
+      currentTerminalComponentName: observable, // TODO: Check if this needs to be observable, probably not.
     });
   }
 
-  getCurrentElement() {
-    return this.elements[this.element];
+  getCurrentTerminalComponent() {
+    return this.terminalComponents[this.currentTerminalComponentName];
   }
 
-  getCurrentElementProperties() {
-    return this.elements[this.element].properties;
+  getCurrentTerminalComponentElements() {
+    return this.terminalComponents[this.currentTerminalComponentName].elements;
   }
 
-  setCurrentElement(element: ElementName) {
-    this.element = element;
+  setCurrentTerminalComponent(terminalComponentName: TerminalComponentName) {
+    this.currentTerminalComponentName = terminalComponentName;
   }
 
-  setElementPropertyValue(
-    elementName: ElementName,
+  setPropertyValue(
+    terminalComponentName: TerminalComponentName,
+    elementName: string,
     propertyName: string,
     value: string
   ) {
-    const property = this.elements[elementName].properties.find(
+    const element = this.terminalComponents[
+      terminalComponentName
+    ].elements.find((element) => element.name === elementName);
+
+    if (element === undefined) {
+      console.warn(
+        `setPropertyValue: Element ${elementName} not found in terminal component ${terminalComponentName}`
+      );
+      return;
+    }
+
+    const property = element.properties.find(
       (property) => property.name === propertyName
     );
+
+    if (property === undefined) {
+      console.warn(
+        `setPropertyValue: Property ${propertyName} not found in element ${terminalComponentName}.${elementName}`
+      );
+    }
 
     property && (property.value = value);
   }
 
-  getElementStyles(element: ElementName): any {
-    return this.elements[element].properties.reduce((styles, property) => {
+  getElementStyles(
+    terminalComponentName: TerminalComponentName,
+    elementName: string
+  ): any {
+    const element = this.terminalComponents[
+      terminalComponentName
+    ].elements.find((element) => element.name === elementName);
+
+    if (element === undefined) {
+      console.warn(
+        `getElementStyles: Element ${elementName} not found in ${terminalComponentName}`
+      );
+      return;
+    }
+
+    return element.properties.reduce((styles, property) => {
       if (!property.cssProp) {
         return styles;
       }
@@ -51,10 +83,26 @@ class Store {
     }, {});
   }
 
-  getElementPropertyValue(element: ElementName, propertyName: string) {
-    const property = this.elements[element].properties.find(
-      (property) => property.name === propertyName
-    );
+  getPropertyValue(
+    terminalComponentName: TerminalComponentName,
+    elementName: string,
+    propertyName: string
+  ): string {
+    const element = this.terminalComponents[
+      terminalComponentName
+    ].elements.find((element) => element.name === elementName);
+
+    if (element === undefined) {
+      console.warn(
+        `getPropertyValue: Element ${elementName} not found in ${terminalComponentName}`
+      );
+
+      return "";
+    }
+
+    const property = element.properties.find((property) => {
+      return property.name === propertyName;
+    });
 
     return property?.value || "";
   }

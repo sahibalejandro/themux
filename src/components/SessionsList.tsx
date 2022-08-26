@@ -4,10 +4,10 @@ import store from "../store";
 import Selectable from "./Selectable";
 
 function SessionsList() {
-  const styles = store.getElementStyles("mode");
+  const styles = store.getElementStyles("mode", "base");
 
   return (
-    <Selectable element="mode">
+    <Selectable terminalComponentName="mode">
       <div style={{ color: styles.color }}>
         <div>(0) + laravel: 2 windows</div>
         <div style={{ backgroundColor: styles.backgroundColor }}>

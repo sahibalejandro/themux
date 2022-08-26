@@ -3,7 +3,13 @@ export enum UIControls {
   ExtraText = "ExtraText",
 }
 
+export interface TerminalComponent {
+  display: string;
+  elements: Element[];
+}
+
 export interface Element {
+  name: string;
   display: string;
   properties: Property[];
 }
@@ -18,17 +24,17 @@ export interface Property {
   value: string;
 }
 
-export interface Elements {
-  terminal: Element;
-  status: Element;
-  statusLeft: Element;
-  statusRight: Element;
-  windowStatus: Element;
-  windowStatusCurrent: Element;
-  pane: Element;
-  paneActive: Element;
-  clock: Element;
-  mode: Element;
+export interface TerminalComponents {
+  terminal: TerminalComponent;
+  status: TerminalComponent;
+  statusLeft: TerminalComponent;
+  statusRight: TerminalComponent;
+  windowStatus: TerminalComponent;
+  windowStatusCurrent: TerminalComponent;
+  pane: TerminalComponent;
+  paneActive: TerminalComponent;
+  clock: TerminalComponent;
+  mode: TerminalComponent;
 }
 
-export type ElementName = keyof Elements;
+export type TerminalComponentName = keyof TerminalComponents;

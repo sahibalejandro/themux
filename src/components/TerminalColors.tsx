@@ -1,10 +1,8 @@
-import { observer } from "mobx-react-lite";
-
 import store from "../store";
 
-function TerminalColors() {
+export default function TerminalColors() {
   function handleClick() {
-    store.setCurrentElement("terminal");
+    store.setCurrentTerminalComponent("terminal");
   }
 
   return (
@@ -13,5 +11,3 @@ function TerminalColors() {
     </button>
   );
 }
-
-export default observer(TerminalColors);

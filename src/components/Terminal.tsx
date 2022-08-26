@@ -8,7 +8,7 @@ import SessionsList from "./SessionsList";
 import Selectable from "./Selectable";
 
 function Terminal() {
-  const style = store.getElementStyles("terminal");
+  const style = store.getElementStyles("terminal", "text");
 
   return (
     <div
@@ -16,14 +16,17 @@ function Terminal() {
       style={style}
     >
       <div className="flex">
-        <Selectable element="pane" className="basis-1/2">
-          <Pane element="pane" className="border-b border-slate-900">
+        <Selectable terminalComponentName="pane" className="basis-1/2">
+          <Pane
+            terminalComponentName="pane"
+            className="border-b border-slate-900"
+          >
             sahib@macbook-pro ~ $
           </Pane>
         </Selectable>
-        <Selectable element="paneActive" className="basis-1/2">
+        <Selectable terminalComponentName="paneActive" className="basis-1/2">
           <Pane
-            element="paneActive"
+            terminalComponentName="paneActive"
             className="border-l border-b border-lime-600"
           >
             <SessionsList />
@@ -31,8 +34,11 @@ function Terminal() {
         </Selectable>
       </div>
       <div>
-        <Pane element="pane" className="flex items-center justify-center">
-          <Selectable element="clock">
+        <Pane
+          terminalComponentName="pane"
+          className="flex items-center justify-center"
+        >
+          <Selectable terminalComponentName="clock">
             <Clock />
           </Selectable>
         </Pane>

@@ -1,16 +1,16 @@
 import { observer } from "mobx-react-lite";
 
 import store from "../store";
-import type { ElementName } from "../types";
+import type { TerminalComponentName } from "../types";
 
 type PropsType = {
   className?: string;
-  element: ElementName;
   children?: React.ReactNode;
+  terminalComponentName: TerminalComponentName;
 };
 
 function Pane(props: PropsType) {
-  const style = store.getElementStyles(props.element);
+  const style = store.getElementStyles(props.terminalComponentName, "base");
 
   return (
     <div className={`h-96 p-2 ${props.className}`} style={style}>

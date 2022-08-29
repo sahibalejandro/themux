@@ -48,7 +48,7 @@ const terminalComponents: TerminalComponents = {
     elements: [
       {
         name: "text",
-        display: "Text",
+        display: "Base Styles",
         properties: [
           color({ value: "#ffffff" }),
           backgroundColor({ value: "#000000" }),
@@ -62,7 +62,7 @@ const terminalComponents: TerminalComponents = {
     elements: [
       {
         name: "text",
-        display: "Text",
+        display: "Base Styles",
         properties: [
           color({ value: "#ffffff" }),
           backgroundColor({ value: "#000000" }),

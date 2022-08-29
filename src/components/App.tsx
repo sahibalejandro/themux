@@ -1,5 +1,5 @@
 import Terminal from "./Terminal";
-import PropertiesPanel from "./PropertiesPanel";
+import ElementsPanel from "./ElementsPanel";
 import TerminalColors from "./TerminalColors";
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
           </div>
         </div>
         <div className="ml-4 w-[400px]">
-          <PropertiesPanel />
+          <ElementsPanel />
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ class Store {
       setPropertyValue: action,
       terminalComponents: observable,
       setCurrentTerminalComponent: action,
-      currentTerminalComponentName: observable, // TODO: Check if this needs to be observable, probably not.
+      currentTerminalComponentName: observable,
     });
   }
 

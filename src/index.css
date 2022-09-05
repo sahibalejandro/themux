@@ -21,10 +21,14 @@
 }
 
 .button {
-  @apply font-bold bg-slate-100 rounded-lg text-slate-600 shadow-slate-300 px-4 py-2;
+  @apply font-bold bg-slate-100 rounded-lg text-slate-600 shadow shadow-slate-300 px-4 py-2;
   @apply hover:bg-slate-200 hover:text-slate-900
 }
 
 .input {
-  @apply border rounded-lg border-slate-400 mt-2 p-2;
+  @apply border rounded-lg border-slate-400 p-1;
+}
+
+.color-preview {
+  @apply w-9 h-9 rounded-full shadow shadow-slate-300 border cursor-pointer;
 }

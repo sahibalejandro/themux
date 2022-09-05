@@ -5,27 +5,19 @@ import type { Element } from "../types";
 
 type PropsType = {
   element: Element;
-  onPropertyChange: (
-    elementName: string,
-    propertyName: string,
-    value: string
-  ) => void;
+  onPropertyChange: (propertyName: string, value: string) => void;
 };
 
 export default observer(function (props: PropsType) {
   const { element } = props;
 
-  function handlePropertyOnChange(propertyName: string, value: string) {
-    props.onPropertyChange(element.name, propertyName, value);
-  }
-
   return (
-    <div className="mt-4 pt-4 border-t">
-      <div className="pr-2">{element.display}</div>
+    <>
+      <div className="px-4 py-2 font-bold">{element.display}</div>
 
       {element.properties.map((property) => (
         <div key={`${element.name}.${property.name}`}>
-          <Property property={property} onChange={handlePropertyOnChange} />
+          <Property property={property} onChange={props.onPropertyChange} />
         </div>
       ))}
 
@@ -39,6 +31,6 @@ export default observer(function (props: PropsType) {
         )}
       </div>
       */}
-    </div>
+    </>
   );
 });

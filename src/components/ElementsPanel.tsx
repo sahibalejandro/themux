@@ -4,27 +4,31 @@ import store from "../store";
 import Element from "./Element";
 
 function ElementsPanel() {
-  function handlePropertyChange(
-    elementName: string,
-    propertyName: string,
-    value: string
-  ) {
-    store.setPropertyValue(
-      store.currentTerminalComponentName,
-      elementName,
-      propertyName,
-      value
-    );
+  /**
+   * The function returned is passed down to the property component
+   * where is called to update the property value.
+   */
+  function makePropertyOnChangeHandler(elementName: string) {
+    return (propertyName: string, value: string) => {
+      store.setPropertyValue(
+        store.currentTerminalComponentName,
+        elementName,
+        propertyName,
+        value
+      );
+    };
   }
 
   return (
     <div>
-      {store.getCurrentTerminalComponent().display}
+      <div className="bg-slate-200 border-b border-slate-300 px-4 py-2 text-xl">
+        {store.getCurrentTerminalComponent().display}
+      </div>
       {store.getCurrentTerminalComponentElements().map((element, idx) => (
         <Element
           key={`element-${idx}`}
           element={element}
-          onPropertyChange={handlePropertyChange}
+          onPropertyChange={makePropertyOnChangeHandler(element.name)}
         />
       ))}
     </div>

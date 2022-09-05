@@ -120,7 +120,7 @@ const terminalComponents: TerminalComponents = {
         properties: [
           extraText({ name: "prefix", display: "Text Before", value: " " }),
           color({ value: "#000000" }),
-          backgroundColor({ value: "#73A132" }),
+          backgroundColor({ value: "#ffcc00" }),
         ],
       },
       {
@@ -129,7 +129,7 @@ const terminalComponents: TerminalComponents = {
         properties: [
           extraText({ name: "suffix", display: "Text After", value: " " }),
           color({ value: "#000000" }),
-          backgroundColor({ value: "#73A132" }),
+          backgroundColor({ value: "#ffcc00" }),
         ],
       },
     ],
@@ -146,6 +146,24 @@ const terminalComponents: TerminalComponents = {
           backgroundColor({ value: "#000000" }),
         ],
       },
+      {
+        name: "text-before",
+        display: "Text Before",
+        properties: [
+          extraText({ name: "prefix", display: "Text Before", value: " " }),
+          color({ value: "#ffffff" }),
+          backgroundColor({ value: "#000000" }),
+        ],
+      },
+      {
+        name: "text-after",
+        display: "Text After",
+        properties: [
+          extraText({ name: "suffix", display: "Text After", value: " " }),
+          color({ value: "#ffffff" }),
+          backgroundColor({ value: "#000000" }),
+        ],
+      },
     ],
   },
 
@@ -156,6 +174,24 @@ const terminalComponents: TerminalComponents = {
         name: "text",
         display: "Text",
         properties: [
+          color({ value: "#000000" }),
+          backgroundColor({ value: "#ffcc00" }),
+        ],
+      },
+      {
+        name: "text-before",
+        display: "Text Before",
+        properties: [
+          extraText({ name: "prefix", display: "Text Before", value: " " }),
+          color({ value: "#000000" }),
+          backgroundColor({ value: "#ffcc00" }),
+        ],
+      },
+      {
+        name: "text-after",
+        display: "Text After",
+        properties: [
+          extraText({ name: "suffix", display: "Text After", value: " " }),
           color({ value: "#000000" }),
           backgroundColor({ value: "#ffcc00" }),
         ],

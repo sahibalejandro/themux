@@ -20,17 +20,19 @@ function ElementsPanel() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <div className="bg-slate-200 border-b border-slate-300 px-4 py-2 text-xl">
         {store.getCurrentTerminalComponent().display}
       </div>
-      {store.getCurrentTerminalComponentElements().map((element, idx) => (
-        <Element
-          key={`element-${idx}`}
-          element={element}
-          onPropertyChange={makePropertyOnChangeHandler(element.name)}
-        />
-      ))}
+      <div className="flex-grow overflow-scroll pb-4">
+        {store.getCurrentTerminalComponentElements().map((element, idx) => (
+          <Element
+            key={`element-${idx}`}
+            element={element}
+            onPropertyChange={makePropertyOnChangeHandler(element.name)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

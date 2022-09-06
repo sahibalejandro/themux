@@ -30,5 +30,5 @@
 }
 
 .color-preview {
-  @apply w-9 h-9 rounded-full shadow shadow-slate-300 border cursor-pointer;
+  @apply w-9 h-9 rounded-full shadow border border-slate-300 cursor-pointer;
 }

@@ -1,19 +1,16 @@
 import Terminal from "./Terminal";
 import ElementsPanel from "./ElementsPanel";
-import TerminalColors from "./TerminalColors";
+import Header from "./Header";
 
 export default function App() {
   return (
-    <div className="py-8">
-      <div className="flex items-center px-4">
-        <h1 className="text-5xl">Tmux Theme Editor</h1>
-        <div className="ml-auto">
-          <TerminalColors />
-        </div>
+    <div className="flex flex-col h-screen">
+      <div className="shrink-0 border-b border-slate-300">
+        <Header />
       </div>
-      <div className="flex mt-8">
-        <div className="flex flex-grow justify-center bg-slate-300 py-8 border-r border-slate-300">
-          <div className="w-[1024px]">
+      <div className="flex flex-grow overflow-hidden">
+        <div className="flex-grow bg-slate-200 border-r border-slate-300 overflow-scroll py-8">
+          <div className="mx-auto w-[1024px]">
             <Terminal />
           </div>
         </div>

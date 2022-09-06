@@ -12,7 +12,7 @@ function Terminal() {
 
   return (
     <div
-      className="font-source-code-pro rounded-lg overflow-hidden shadow-md leading-4"
+      className="font-source-code-pro rounded-lg shadow-md leading-4 overflow-hidden"
       style={style}
     >
       <div className="flex">

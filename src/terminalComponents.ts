@@ -6,7 +6,7 @@ type PropertyOverrides = Partial<Property> & Required<Pick<Property, "value">>;
 function color(overrides: PropertyOverrides): Property {
   return {
     name: "color",
-    display: "Color",
+    display: "Text Color",
     cssProp: "color",
     tmuxProp: "fg",
     uiControl: UIControls.ColorPicker,
@@ -17,7 +17,7 @@ function color(overrides: PropertyOverrides): Property {
 function backgroundColor(overrides: PropertyOverrides) {
   return color({
     name: "background-color",
-    display: "Background",
+    display: "Background Color",
     cssProp: "backgroundColor",
     tmuxProp: "bg",
     ...overrides,
@@ -27,6 +27,7 @@ function backgroundColor(overrides: PropertyOverrides) {
 function borderColor(overrides: PropertyOverrides) {
   return color({
     name: "border-color",
+    display: "Border Color",
     cssProp: "borderColor",
     ...overrides,
   });
@@ -35,7 +36,7 @@ function borderColor(overrides: PropertyOverrides) {
 function extraText(overrides: Partial<Property> = {}) {
   return {
     name: "extra-text",
-    display: "Extra Text",
+    display: "Text",
     uiControl: UIControls.ExtraText,
     value: " ",
     ...overrides,
@@ -47,8 +48,8 @@ const terminalComponents: TerminalComponents = {
     display: "Terminal",
     elements: [
       {
-        name: "text",
-        display: "Base Styles",
+        name: "general",
+        display: "General",
         properties: [
           color({ value: "#ffffff" }),
           backgroundColor({ value: "#000000" }),
@@ -61,12 +62,9 @@ const terminalComponents: TerminalComponents = {
     display: "Status Bar",
     elements: [
       {
-        name: "text",
-        display: "Base Styles",
-        properties: [
-          color({ value: "#ffffff" }),
-          backgroundColor({ value: "#000000" }),
-        ],
+        name: "general",
+        display: "General",
+        properties: [backgroundColor({ value: "#000000" })],
       },
     ],
   },
@@ -75,27 +73,27 @@ const terminalComponents: TerminalComponents = {
     display: "Status Left",
     elements: [
       {
-        name: "text",
-        display: "Text",
+        name: "general",
+        display: "General",
         properties: [
           color({ value: "#000000" }),
           backgroundColor({ value: "#73A132" }),
         ],
       },
       {
-        name: "text-before",
-        display: "Text Before",
+        name: "prefix",
+        display: "Prefix",
         properties: [
-          extraText({ name: "prefix", display: "Text Before", value: " " }),
+          extraText({ name: "prefix" }),
           color({ value: "#000000" }),
           backgroundColor({ value: "#73A132" }),
         ],
       },
       {
-        name: "text-after",
-        display: "Text After",
+        name: "suffix",
+        display: "Suffix",
         properties: [
-          extraText({ name: "suffix", display: "Text After", value: " " }),
+          extraText({ name: "suffix" }),
           color({ value: "#000000" }),
           backgroundColor({ value: "#73A132" }),
         ],
@@ -107,27 +105,27 @@ const terminalComponents: TerminalComponents = {
     display: "Status Right",
     elements: [
       {
-        name: "text",
-        display: "Text",
+        name: "general",
+        display: "General",
         properties: [
           color({ value: "#000000" }),
           backgroundColor({ value: "#ffcc00" }),
         ],
       },
       {
-        name: "text-before",
-        display: "Text Before",
+        name: "prefix",
+        display: "Prefix",
         properties: [
-          extraText({ name: "prefix", display: "Text Before", value: " " }),
+          extraText({ name: "prefix" }),
           color({ value: "#000000" }),
           backgroundColor({ value: "#ffcc00" }),
         ],
       },
       {
-        name: "text-after",
-        display: "Text After",
+        name: "suffix",
+        display: "Suffix",
         properties: [
-          extraText({ name: "suffix", display: "Text After", value: " " }),
+          extraText({ name: "suffix" }),
           color({ value: "#000000" }),
           backgroundColor({ value: "#ffcc00" }),
         ],
@@ -139,27 +137,27 @@ const terminalComponents: TerminalComponents = {
     display: "Window Status",
     elements: [
       {
-        name: "text",
-        display: "Text",
+        name: "general",
+        display: "General",
         properties: [
           color({ value: "#ffffff" }),
           backgroundColor({ value: "#000000" }),
         ],
       },
       {
-        name: "text-before",
-        display: "Text Before",
+        name: "prefix",
+        display: "Prefix",
         properties: [
-          extraText({ name: "prefix", display: "Text Before", value: " " }),
+          extraText({ name: "prefix" }),
           color({ value: "#ffffff" }),
           backgroundColor({ value: "#000000" }),
         ],
       },
       {
-        name: "text-after",
-        display: "Text After",
+        name: "suffix",
+        display: "Suffix",
         properties: [
-          extraText({ name: "suffix", display: "Text After", value: " " }),
+          extraText({ name: "suffix" }),
           color({ value: "#ffffff" }),
           backgroundColor({ value: "#000000" }),
         ],
@@ -171,27 +169,27 @@ const terminalComponents: TerminalComponents = {
     display: "Window Status Current",
     elements: [
       {
-        name: "text",
-        display: "Text",
+        name: "general",
+        display: "General",
         properties: [
           color({ value: "#000000" }),
           backgroundColor({ value: "#ffcc00" }),
         ],
       },
       {
-        name: "text-before",
-        display: "Text Before",
+        name: "prefix",
+        display: "Prefix",
         properties: [
-          extraText({ name: "prefix", display: "Text Before", value: " " }),
+          extraText({ name: "prefix" }),
           color({ value: "#000000" }),
           backgroundColor({ value: "#ffcc00" }),
         ],
       },
       {
-        name: "text-after",
-        display: "Text After",
+        name: "suffix",
+        display: "Suffix",
         properties: [
-          extraText({ name: "suffix", display: "Text After", value: " " }),
+          extraText({ name: "suffix" }),
           color({ value: "#000000" }),
           backgroundColor({ value: "#ffcc00" }),
         ],
@@ -200,22 +198,22 @@ const terminalComponents: TerminalComponents = {
   },
 
   pane: {
-    display: "Pane",
+    display: "Pane (Inactive)",
     elements: [
       {
-        name: "base",
-        display: "Base Style",
+        name: "general",
+        display: "General",
         properties: [borderColor({ value: "#888888" })],
       },
     ],
   },
 
   paneActive: {
-    display: "Pane Active",
+    display: "Pane (Active)",
     elements: [
       {
-        name: "base",
-        display: "Base Style",
+        name: "general",
+        display: "General",
         properties: [borderColor({ value: "#73A132" })],
       },
     ],
@@ -225,19 +223,21 @@ const terminalComponents: TerminalComponents = {
     display: "Clock",
     elements: [
       {
-        name: "text",
-        display: "Text",
-        properties: [backgroundColor({ value: "#ff5533" })],
+        name: "general",
+        display: "General",
+        properties: [
+          backgroundColor({ display: "Text Color", value: "#ff5533" }),
+        ],
       },
     ],
   },
 
   mode: {
-    display: "Mode",
+    display: "Sessions List",
     elements: [
       {
-        name: "base",
-        display: "Base Style",
+        name: "general",
+        display: "General",
         properties: [
           color({ value: "#ffffff" }),
           backgroundColor({ value: "#73A132" }),

@@ -10,7 +10,7 @@ type PropsType = {
 };
 
 function Pane(props: PropsType) {
-  const style = store.getElementStyles(props.terminalComponentName, "base");
+  const style = store.getElementStyles(props.terminalComponentName, "general");
 
   return (
     <div className={`h-96 p-2 ${props.className}`} style={style}>

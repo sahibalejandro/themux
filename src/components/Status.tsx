@@ -5,69 +5,63 @@ import Selectable from "./Selectable";
 import { keepWhitespaces } from "../utils";
 
 function Status() {
-  const statusStyles = store.getElementStyles("status", "text");
-  const statusLeftStyles = store.getElementStyles("statusLeft", "text");
-  const statusLeftBeforeStyles = store.getElementStyles(
-    "statusLeft",
-    "text-before"
-  );
-  const statusLeftAfterStyles = store.getElementStyles(
-    "statusLeft",
-    "text-after"
-  );
-  const statusRightStyles = store.getElementStyles("statusRight", "text");
+  const statusStyles = store.getElementStyles("status", "general");
+  const statusLeftStyles = store.getElementStyles("statusLeft", "general");
+  const statusLeftBeforeStyles = store.getElementStyles("statusLeft", "prefix");
+  const statusLeftAfterStyles = store.getElementStyles("statusLeft", "suffix");
+  const statusRightStyles = store.getElementStyles("statusRight", "general");
   const statusRightBeforeStyles = store.getElementStyles(
     "statusRight",
-    "text-before"
+    "prefix"
   );
   const statusRightAfterStyles = store.getElementStyles(
     "statusRight",
-    "text-after"
+    "suffix"
   );
-  const windowStatusStyles = store.getElementStyles("windowStatus", "text");
+  const windowStatusStyles = store.getElementStyles("windowStatus", "general");
   const windowStatusCurrentStyles = store.getElementStyles(
     "windowStatusCurrent",
-    "text"
+    "general"
   );
   const statusLeftBefore = keepWhitespaces(
-    store.getPropertyValue("statusLeft", "text-before", "prefix")
+    store.getPropertyValue("statusLeft", "prefix", "prefix")
   );
   const statusLeftAfter = keepWhitespaces(
-    store.getPropertyValue("statusLeft", "text-after", "suffix")
+    store.getPropertyValue("statusLeft", "suffix", "suffix")
   );
   const statusRightBefore = keepWhitespaces(
-    store.getPropertyValue("statusRight", "text-before", "prefix")
+    store.getPropertyValue("statusRight", "prefix", "prefix")
   );
   const statusRightAfter = keepWhitespaces(
-    store.getPropertyValue("statusRight", "text-after", "suffix")
+    store.getPropertyValue("statusRight", "suffix", "suffix")
   );
   const windowStatusBefore = keepWhitespaces(
-    store.getPropertyValue("windowStatus", "text-before", "prefix")
+    store.getPropertyValue("windowStatus", "prefix", "prefix")
   );
   const windowStatusAfter = keepWhitespaces(
-    store.getPropertyValue("windowStatus", "text-after", "suffix")
+    store.getPropertyValue("windowStatus", "suffix", "suffix")
   );
   const windowStatusBeforeStyles = store.getElementStyles(
     "windowStatus",
-    "text-before"
+    "prefix"
   );
   const windowStatusAfterStyles = store.getElementStyles(
     "windowStatus",
-    "text-after"
+    "suffix"
   );
   const windowStatusCurrentBefore = keepWhitespaces(
-    store.getPropertyValue("windowStatusCurrent", "text-before", "prefix")
+    store.getPropertyValue("windowStatusCurrent", "prefix", "prefix")
   );
   const windowStatusCurrentAfter = keepWhitespaces(
-    store.getPropertyValue("windowStatusCurrent", "text-after", "suffix")
+    store.getPropertyValue("windowStatusCurrent", "suffix", "suffix")
   );
   const windowStatusCurrentBeforeStyles = store.getElementStyles(
     "windowStatusCurrent",
-    "text-before"
+    "prefix"
   );
   const windowStatusCurrentAfterStyles = store.getElementStyles(
     "windowStatusCurrent",
-    "text-after"
+    "suffix"
   );
 
   return (

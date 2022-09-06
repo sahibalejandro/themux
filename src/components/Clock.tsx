@@ -40,7 +40,7 @@ function Clock() {
     useCallback(() => getCurrentTimeDigits(), [])
   );
 
-  const style = store.getElementStyles("clock", "text");
+  const style = store.getElementStyles("clock", "general");
 
   useEffect(() => {
     const intervalId = setInterval(() => setTime(getCurrentTimeDigits()), 1000);

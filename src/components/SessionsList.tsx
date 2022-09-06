@@ -4,7 +4,7 @@ import store from "../store";
 import Selectable from "./Selectable";
 
 function SessionsList() {
-  const styles = store.getElementStyles("mode", "base");
+  const styles = store.getElementStyles("mode", "general");
 
   return (
     <Selectable terminalComponentName="mode">

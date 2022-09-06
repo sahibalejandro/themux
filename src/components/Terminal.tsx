@@ -8,7 +8,7 @@ import SessionsList from "./SessionsList";
 import Selectable from "./Selectable";
 
 function Terminal() {
-  const style = store.getElementStyles("terminal", "text");
+  const style = store.getElementStyles("terminal", "general");
 
   return (
     <div

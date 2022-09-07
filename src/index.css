@@ -25,6 +25,11 @@
   @apply hover:bg-slate-200 hover:text-slate-900
 }
 
+.button.success {
+  @apply bg-green-300 text-green-900;
+  @apply hover:bg-green-400;
+}
+
 .input {
   @apply border rounded-lg border-slate-400 p-1;
 }

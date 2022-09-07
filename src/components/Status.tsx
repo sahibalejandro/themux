@@ -98,7 +98,7 @@ function Status() {
         <Selectable terminalComponentName="statusRight">
           <div className="flex">
             <div style={statusRightBeforeStyles}>{statusRightBefore}</div>
-            <div style={statusRightStyles}>09 Aug 2022</div>
+            <div style={statusRightStyles}>localhost</div>
             <div style={statusRightAfterStyles}>{statusRightAfter}</div>
           </div>
         </Selectable>
